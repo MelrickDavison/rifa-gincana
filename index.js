@@ -1,6 +1,14 @@
 const numerosIndisponiveis = [23, 56, 150, 785, 999]; // Exemplo de números já escolhidos
+var numerosSelecionados = [];
 
-// Função para criar os botões dos números
+function selectNumber(num){
+    const divNumerosSelecionados = document.getElementById('numerosSelecionados');
+    numerosSelecionados.push(num);
+    divNumerosSelecionados.innerHTML = numerosSelecionados.join(', ');
+
+}
+
+
 function criarBotoesNumeros() {
     const gridNumeros = document.getElementById('gridNumeros');
     
@@ -18,10 +26,18 @@ function criarBotoesNumeros() {
             if (numerosIndisponiveis.includes(i)) {
                 alert('Este número já foi escolhido. Por favor, escolha outro.');
             } else {
-                numerosIndisponiveis.push(i);
-                alert(`Número ${i} escolhido com sucesso!`);
-                botao.classList.remove('disponivel');
-                botao.classList.add('indisponivel');
+                if(numerosSelecionados.includes(i)){
+                    alert('Este número já foi selecionado.');
+                } else{
+                    selectNumber(i)
+                    botao.classList.remove('disponivel');
+                    botao.classList.add('selecionado');
+                    // numerosIndisponiveis.push(i);
+                    // alert(`Número ${i} escolhido com sucesso!`);
+                    // botao.classList.remove('disponivel');
+                    // botao.classList.add('indisponivel');
+                }
+
             }
         });
 

@@ -56,6 +56,11 @@ button.disponivel {
     color: white;
 }
 
+button.selecionado {
+    background-color: #014e8d;
+    color: white;
+}
+
 button.indisponivel {
     background-color: #ccc;
     color: #666;
