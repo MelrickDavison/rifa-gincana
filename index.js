@@ -44,5 +44,30 @@ function criarBotoesNumeros() {
         gridNumeros.appendChild(botao);
     }
 }
-
 criarBotoesNumeros();
+
+function formatarTelefone(value) {
+    // Remove todos os caracteres que não sejam números
+    value = value.replace(/\D/g, '');
+
+    // Verifica se o número tem 11 dígitos (celular) ou 10 dígitos (fixo)
+    if (value.length > 10) {
+        // Formato para celular: (XX) XXXXX-XXXX
+        return value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    } else if (value.length > 5) {
+        // Formato para fixo: (XX) XXXX-XXXX
+        return value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+    } else if (value.length > 2) {
+        // Caso o usuário tenha digitado apenas parte do número
+        return value.replace(/(\d{2})(\d*)/, '($1) $2');
+    } else {
+        // Caso o usuário tenha digitado apenas o DDD
+        return value.replace(/(\d*)/, '($1');
+    }
+}
+
+// Aplica a máscara enquanto o usuário digita
+document.getElementById('telefone').addEventListener('input', function(e) {
+    e.target.value = formatarTelefone(e.target.value);
+});
+
