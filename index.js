@@ -10,6 +10,18 @@ function selectNumber(num){
     divValorTotal.innerHTML = `Valor total: R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
 }
 
+function desmarcarNum(num){
+    const divNumerosSelecionados = document.getElementById('numerosSelecionados');
+    const divValorTotal = document.getElementById('valorTotal');
+    for(i = 0; i < numerosSelecionados.length; i++){
+        if(numerosSelecionados[i] == num){
+            numerosSelecionados.splice(i, 1)
+    }
+}
+    divNumerosSelecionados.innerHTML = `Números selecionados: <br> ${numerosSelecionados.join(', ')}`;
+    const valorTotal = numerosSelecionados.length * 2;
+    divValorTotal.innerHTML = `Valor total: R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
+}
 
 function criarBotoesNumeros() {
     const gridNumeros = document.getElementById('gridNumeros');
@@ -30,7 +42,9 @@ function criarBotoesNumeros() {
                 alert('Este número já foi escolhido. Por favor, escolha outro.');
             } else {
                 if(numerosSelecionados.includes(i)){
-                    alert('Este número já foi selecionado.');
+                    botao.classList.remove('selecionado');
+                    botao.classList.add('disponivel');
+                    desmarcarNum(i)
                 } else{
                     selectNumber(i)
                     botao.classList.remove('disponivel');
@@ -100,7 +114,7 @@ document.getElementById('formCompra').addEventListener('submit', function(e) {
        
         alert('Compra confirmada! Obrigado por participar da rifa e boa sorte.');
         this.reset();
-        document.getElementById('valorTotal').textContent = 'R$ 0,00'; // Reseta o valor total
+        document.getElementById('valorTotal').textContent = 'R$ 0,00'; 
         numerosSelecionados = []; 
        
     }
