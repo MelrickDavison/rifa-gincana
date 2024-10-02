@@ -5,7 +5,7 @@ function selectNumber(num){
     const divNumerosSelecionados = document.getElementById('numerosSelecionados');
     const divValorTotal = document.getElementById('valorTotal');
     numerosSelecionados.push(num);
-    divNumerosSelecionados.innerHTML = `Números selecionados: ${numerosSelecionados.join(', ')}`;
+    divNumerosSelecionados.innerHTML = `Números selecionados: <br> ${numerosSelecionados.join(', ')}`;
     const valorTotal = numerosSelecionados.length * 2;
     divValorTotal.innerHTML = `Valor total: R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
 }
