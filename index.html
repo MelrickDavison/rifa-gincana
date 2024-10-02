@@ -14,8 +14,24 @@
         <div id="gridNumeros"></div>
         <div>
             <p>Números selecionados: </p>
-            <div id="numerosSelecionados"></div>
+            <div id="numerosSelecionados"> Nenhum </div>
         </div>
+     <div>
+        <form id="formCompra">
+            <h2>Confirme sua compra</h2>
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="Seu telefone" required>
+            </div>
+
+            <button type="submit">Confirmar Compra</button>
+        </form>
+    </div>
     </div>
     <script src="index.js"></script>
 </body>
