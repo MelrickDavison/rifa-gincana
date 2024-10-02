@@ -4,19 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rifa - Escolha um Número</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">  <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Concorra a uma rifa de R$150,00!</h1>
-        <p>Escolha um número de 1 a 1000:</p>
+
+        <div  class="title">
+
+            <h1 class="titleSup">Rifa para casamento</h1>
+            <h1 class="titlePrincipal">Guilherme & Ivana</h1>
+        </div>
+
+        <div class="subtitle">
+            <div class="row">
+                <h3  class="rowTitle">Sorteio:</h3>
+                <p class="rowSubtitle">04/11/2024</p>
+            </div>
+            <div class="row">
+                <h3 class="rowTitle"> Prêmio:</h3>
+                <p class="rowSubtitle">Concorra a R$150,00</p>
+            </div>
+ 
+        </div>
+
+        <h3>Escolha um número de 1 a 1000:</h3>
 
         <div id="gridNumeros"></div>
         <h2 id="numerosSelecionados">Números selecionados: Nenhum</h2>
         <h3 id="valorTotal">Valor total: R$ 0,00</h3>
 
         <form id="formCompra">
-            <h2>Confirme sua compra</h2>
+            <h2>Informe seus dados</h2>
             <div class="form-group">
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
