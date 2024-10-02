@@ -73,3 +73,39 @@ document.getElementById('telefone').addEventListener('input', function(e) {
     e.target.value = formatarTelefone(e.target.value);
 });
 
+document.getElementById('formCompra').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+
+
+    const nome = document.getElementById('nome').value.trim();
+    const telefone = document.getElementById('telefone').value.trim();
+    const valorTotal = document.getElementById('valorTotal').textContent;
+
+    if (nome === '') {
+        alert('Por favor, insira seu nome.');
+        return;
+    }
+
+    if (!validarTelefone(telefone)) {
+        alert('Por favor, insira um número de telefone válido.');
+        return;
+    }
+
+    const confirmacao = confirm(
+        `Nome: ${nome}\nTelefone: ${telefone}\nValor total: ${valorTotal}\n\nDeseja confirmar a compra?`
+    );
+
+    if (confirmacao) {
+       
+        alert('Compra confirmada! Obrigado por participar da rifa e boa sorte.');
+        this.reset();
+        document.getElementById('valorTotal').textContent = 'R$ 0,00'; // Reseta o valor total
+        numerosSelecionados = []; 
+       
+    }
+});
+
+function validarTelefone(telefone) {
+    const regexTelefone = /^\(?\d{2}\)? ?\d{4,5}-?\d{4}$/;
+    return regexTelefone.test(telefone);
+}
