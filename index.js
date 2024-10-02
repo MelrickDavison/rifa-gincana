@@ -17,6 +17,7 @@ function criarBotoesNumeros() {
     for (let i = 1; i <= 1000; i++) {
         const botao = document.createElement('button');
         botao.textContent = i;
+        botao.id = i;
 
         if (numerosIndisponiveis.includes(i)) {
             botao.classList.add('indisponivel');
@@ -92,7 +93,7 @@ document.getElementById('formCompra').addEventListener('submit', function(e) {
     }
 
     const confirmacao = confirm(
-        `Nome: ${nome}\nTelefone: ${telefone}\nValor total: ${valorTotal}\n\nDeseja confirmar a compra?`
+        `Nome: ${nome}\nTelefone: ${telefone}\n${valorTotal}\n\nDeseja confirmar a compra?`
     );
 
     if (confirmacao) {
