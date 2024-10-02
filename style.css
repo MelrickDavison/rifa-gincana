@@ -119,6 +119,11 @@ form h2 {
     margin-bottom: 15px;
 }
 
+.avisoPagamento {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 label {
     display: block;
     margin-bottom: 5px;
