@@ -1,4 +1,4 @@
-import { db } from './firebaseConfig'
+import  db  from './firebaseConfig.js'
 
 const numerosIndisponiveis = [23, 56, 150, 785, 999]; // Exemplo de números já escolhidos
 var numerosSelecionados = [];
