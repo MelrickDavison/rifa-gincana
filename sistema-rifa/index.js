@@ -72,13 +72,12 @@ function criarBotoesNumeros() {
                     botao.classList.add('disponivel');
                     desmarcarNum(i)
                 } else{
-                    selectNumber(i)
-                    botao.classList.remove('disponivel');
-                    botao.classList.add('selecionado');
-                    // numerosIndisponiveis.push(i);
-                    // alert(`Número ${i} escolhido com sucesso!`);
-                    // botao.classList.remove('disponivel');
-                    // botao.classList.add('indisponivel');
+                    
+                    if (nome && telefone) {
+                        selectNumber(i)
+                        botao.classList.remove('disponivel');
+                        botao.classList.add('selecionado');
+                    }
                 }
 
             }
