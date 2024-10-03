@@ -1,4 +1,5 @@
-import db from './firebaseConfig.js'
+import {db} from './firebaseConfig.js'
+import { collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
 const numerosIndisponiveis = [23, 56, 150, 785, 999]; // Exemplo de números já escolhidos
 var numerosSelecionados = [];
