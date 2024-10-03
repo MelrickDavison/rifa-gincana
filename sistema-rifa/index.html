@@ -28,13 +28,6 @@
             </div>
  
         </div>
-
-        <h3>Escolha um número de 1 a 1000:</h3>
-
-        <div id="gridNumeros"></div>
-        <h2 id="numerosSelecionados">Números selecionados: Nenhum</h2>
-        <h3 id="valorTotal">Valor total: R$ 0,00</h3>
-
         <form id="formCompra">
             <h2>SEUS DADOS</h2>
             <div class="form-group">
@@ -46,17 +39,29 @@
                 <label for="telefone">Telefone:</label>
                 <input type="tel" id="telefone" name="telefone" placeholder="Seu telefone" required>
             </div>
+        </form>
 
-            <h2>PAGAMENTO</h2>
-            <p>Realize o pagamento através do pix:</p>
-            <h2>ajudeivanaeguiacasar@gmail.com</h2>
-            <div class="avisoPagamento">
-                <h3 style="color: #024da3;">ATENÇÃO:</h3>
-                <p>Só será aceito os pagamentos cujo comprovante for enviado para o WhatsApp: <u style="color: #024da3; font-weight: 700;">82 9636-5716</u> </p>
+    <div class="display-numeros">
+        <h2>Escolha um número de 1 a 1000:</h2>
+        <div id="gridNumeros"></div>
+    </div>
+      
+        <h2 id="numerosSelecionados">Números selecionados: Nenhum</h2>
+        <h3 id="valorTotal">Valor total: R$ 0,00</h3>
+
+        <div class='display-pagamento'>
+            <div class="form-group">
+                <h2>PAGAMENTO</h2>
+                <p>Realize o pagamento através do pix:</p>
+                <h2>ajudeivanaeguiacasar@gmail.com</h2>
+                <div class="avisoPagamento">
+                    <h3 style="color: #024da3;">ATENÇÃO:</h3>
+                    <p>Só será aceito os pagamentos cujo comprovante for enviado para o WhatsApp: <u style="color: #024da3; font-weight: 700;">82 9636-5716</u> </p>
+                </div>
             </div>
             
-            <button type="submit" onclick="confirmarPagamento()">Confirmar Compra</button>
-        </form>
+            <button class="confirmButton" onclick="confirmarPagamento()">Confirmar Compra</button>
+        </div>
     </div>
     </div>
     <script type="module" src="firebaseConfig.js"></script>
