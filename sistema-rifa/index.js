@@ -25,6 +25,20 @@ function desmarcarNum(num){
     divValorTotal.innerHTML = `Valor total: R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
 }
 
+const salvarRifa =  async (numero, nome, telefone) => {
+    try {
+        await db.collection("rifas").add({
+        numero: numero,
+        nome: nome,
+        telefone: telefone
+    });
+    }
+    catch(error){
+        console.error("Erro ao salvar a rifa: ", error);
+        alert("Ocorreu um erro ao reservar o número. Tente novamente.");
+    };
+}
+
 function criarBotoesNumeros() {
     const gridNumeros = document.getElementById('gridNumeros');
     
