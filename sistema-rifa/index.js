@@ -153,3 +153,19 @@ function validarTelefone(telefone) {
     const regexTelefone = /^\(?\d{2}\)? ?\d{4,5}-?\d{4}$/;
     return regexTelefone.test(telefone);
 }
+
+function confirmarPagamento() {
+    let nome = document.getElementById('nome').value;
+    let telefone = document.getElementById('telefone').value;
+    if (numerosSelecionados.length > 0) {
+       for(let i = 0; i < numerosSelecionados.length; i++){
+            salvarRifa(i, nome, telefone)
+            numerosIndisponiveis.push(i);
+       }
+    } else {
+        alert("Selecione ao menos um número para confirmar a compra.");
+    }
+}
+
+// Chama a função para carregar números indisponíveis ao carregar a página
+window.onload = carregarNumerosIndisponiveis;
