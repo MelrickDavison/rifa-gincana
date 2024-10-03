@@ -1,4 +1,4 @@
-import  db  from './firebaseConfig.js'
+import db from './firebaseConfig.js'
 
 const numerosIndisponiveis = [23, 56, 150, 785, 999]; // Exemplo de números já escolhidos
 var numerosSelecionados = [];
@@ -35,13 +35,13 @@ async function carregarNumerosIndisponiveis() {
 }
 
 
-const salvarRifa =  async (numero, nome, telefone) => {
+async function salvarRifa(numero, nome, telefone){
     try {
-        await db.collection("rifas").add({
-        numero: numero,
-        nome: nome,
-        telefone: telefone
-    });
+        await addDoc(collection(db, "rifas"), {
+            numero: numero,
+            nome: nome,
+            telefone: telefone
+        });
     }
     catch(error){
         console.error("Erro ao salvar a rifa: ", error);
