@@ -25,6 +25,16 @@ function desmarcarNum(num){
     divValorTotal.innerHTML = `Valor total: R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
 }
 
+async function carregarNumerosIndisponiveis() {
+    const querySnapshot = await getDocs(collection(db, "rifas"));
+    querySnapshot.forEach((doc) => {
+        const numeroEscolhido = doc.data().numero;
+        numerosIndisponiveis.push(numeroEscolhido);
+    });
+    criarBotoesNumeros();
+}
+
+
 const salvarRifa =  async (numero, nome, telefone) => {
     try {
         await db.collection("rifas").add({
