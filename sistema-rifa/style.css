@@ -58,7 +58,7 @@ body {
     color: #003674;
     font-weight: bold;
     font-family: Dancing Script;
-    font-size: 6vw;
+    font-size: 10vw;
     
 }
 
@@ -147,7 +147,7 @@ form h2 {
     color: #024da3;
 }
 
-.display-pagamento h2 {
+.display-pagamento h2{
     margin-bottom: 15px;
     font-size: 20px;
     color: #024da3;
