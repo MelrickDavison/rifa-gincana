@@ -34,11 +34,14 @@ async function carregarNumerosIndisponiveis() {
 
 async function salvarRifa(numero, nome, telefone){
     try {
+        for(let i = 0; i < numerosSelecionados.length; i++){
         await addDoc(collection(db, "rifas"), {
-            numero: numero,
+            numero: numerosSelecionados[i],
             nome: nome,
             telefone: telefone
         });
+        numerosIndisponiveis.push(numerosSelecionados[i]);
+    }
     }
     catch(error){
         console.error("Erro ao salvar a rifa: ", error);
@@ -153,15 +156,26 @@ function validarTelefone(telefone) {
 function confirmarPagamento() {
     let nome = document.getElementById('nome').value;
     let telefone = document.getElementById('telefone').value;
+    const valorTotal = numerosSelecionados.length * 2;
     if (numerosSelecionados.length > 0) {
-       for(let i = 0; i < numerosSelecionados.length; i++){
-            salvarRifa(i, nome, telefone)
-            numerosIndisponiveis.push(i);
-       }
+      const confirmacao = confirm(
+        `Nome: ${nome}\nTelefone: ${telefone}\nValor total: ${valorTotal}\n\nDeseja confirmar a compra?`
+    ); 
+
+        if (confirmacao) {
+            salvarRifa(numerosSelecionados, nome, telefone)
+            alert('Compra confirmada! Obrigado por participar da rifa.');
+            numerosSelecionados = []; 
+            location.reload();
+     }
     } else {
         alert("Selecione ao menos um número para confirmar a compra.");
     }
 }
+
+
+const buttonFinalizar = document.getElementById('buttonConfirm')
+buttonFinalizar.addEventListener('click', confirmarPagamento)
 
 // Chama a função para carregar números indisponíveis ao carregar a página
 window.onload = carregarNumerosIndisponiveis;
