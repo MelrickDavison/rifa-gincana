@@ -91,7 +91,6 @@ function criarBotoesNumeros() {
         gridNumeros.appendChild(botao);
     }
 }
-criarBotoesNumeros();
 
 function formatarTelefone(value) {
     // Remove todos os caracteres que não sejam números
