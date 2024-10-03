@@ -72,11 +72,15 @@ function criarBotoesNumeros() {
                     botao.classList.add('disponivel');
                     desmarcarNum(i)
                 } else{
-                    
+                    let nome = document.getElementById('nome').value;
+                    let telefone = document.getElementById('telefone').value;
+
                     if (nome && telefone) {
                         selectNumber(i)
                         botao.classList.remove('disponivel');
                         botao.classList.add('selecionado');
+                    } else {
+                        alert('Por favor, preencha o nome e telefone.');
                     }
                 }
 
