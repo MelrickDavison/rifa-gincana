@@ -16,11 +16,7 @@ function selectNumber(num){
 function desmarcarNum(num){
     const divNumerosSelecionados = document.getElementById('numerosSelecionados');
     const divValorTotal = document.getElementById('valorTotal');
-    for(i = 0; i < numerosSelecionados.length; i++){
-        if(numerosSelecionados[i] == num){
-            numerosSelecionados.splice(i, 1)
-    }
-}
+    numerosSelecionados.splice(numerosSelecionados.indexOf(num), 1);
     divNumerosSelecionados.innerHTML = `Números selecionados: <br> ${numerosSelecionados.join(', ')}`;
     const valorTotal = numerosSelecionados.length * 2;
     divValorTotal.innerHTML = `Valor total: R$ ${valorTotal.toFixed(2).replace('.', ',')}`;
