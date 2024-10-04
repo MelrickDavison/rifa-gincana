@@ -32,7 +32,7 @@ async function carregarNumerosIndisponiveis() {
 }
 
 
-async function salvarRifa(numero, nome, telefone){
+async function salvarRifa(nome, telefone){
     try {
         for(let i = 0; i < numerosSelecionados.length; i++){
         await addDoc(collection(db, "rifas"), {
@@ -116,10 +116,13 @@ document.getElementById('telefone').addEventListener('input', function(e) {
     e.target.value = formatarTelefone(e.target.value);
 });
 
-document.getElementById('formCompra').addEventListener('submit', function(e) {
-    e.preventDefault(); 
 
+function validarTelefone(telefone) {
+    const regexTelefone = /^\(?\d{2}\)? ?\d{4,5}-?\d{4}$/;
+    return regexTelefone.test(telefone);
+}
 
+function confirmarPagamento() {
     const nome = document.getElementById('nome').value.trim();
     const telefone = document.getElementById('telefone').value.trim();
     const valorTotal = document.getElementById('valorTotal').textContent;
@@ -134,40 +137,19 @@ document.getElementById('formCompra').addEventListener('submit', function(e) {
         return;
     }
 
-    const confirmacao = confirm(
-        `Nome: ${nome}\nTelefone: ${telefone}\n${valorTotal}\n\nDeseja confirmar a compra?`
-    );
-
-    if (confirmacao) {
-       
-        alert('Compra confirmada! Obrigado por participar da rifa e boa sorte.');
-        this.reset();
-        document.getElementById('valorTotal').textContent = 'R$ 0,00'; 
-        numerosSelecionados = []; 
-       
-    }
-});
-
-function validarTelefone(telefone) {
-    const regexTelefone = /^\(?\d{2}\)? ?\d{4,5}-?\d{4}$/;
-    return regexTelefone.test(telefone);
-}
-
-function confirmarPagamento() {
-    let nome = document.getElementById('nome').value;
-    let telefone = document.getElementById('telefone').value;
-    const valorTotal = numerosSelecionados.length * 2;
+ 
     if (numerosSelecionados.length > 0) {
-      const confirmacao = confirm(
-        `Nome: ${nome}\nTelefone: ${telefone}\nValor total: ${valorTotal}\n\nDeseja confirmar a compra?`
-    ); 
+        const confirmacao = confirm(
+            `Nome: ${nome}\nTelefone: ${telefone}\n R$${valorTotal}.00\n Números selecionados: ${numerosSelecionados.join(', ')}\nDeseja confirmar a compra?`
+        );
 
         if (confirmacao) {
-            salvarRifa(numerosSelecionados, nome, telefone)
-            alert('Compra confirmada! Obrigado por participar da rifa.');
+            salvarRifa(nome, telefone)
+            alert('Compra confirmada! Obrigado por participar da rifa e boa sorte.');
+            document.getElementById('valorTotal').textContent = 'R$ 0,00'; 
             numerosSelecionados = []; 
             location.reload();
-     }
+        }
     } else {
         alert("Selecione ao menos um número para confirmar a compra.");
     }
