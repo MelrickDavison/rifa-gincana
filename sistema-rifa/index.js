@@ -122,7 +122,7 @@ function validarTelefone(telefone) {
     return regexTelefone.test(telefone);
 }
 
-function confirmarPagamento() {
+async function confirmarPagamento() {
     const nome = document.getElementById('nome').value.trim();
     const telefone = document.getElementById('telefone').value.trim();
     const valorTotal = document.getElementById('valorTotal').textContent;
@@ -144,7 +144,7 @@ function confirmarPagamento() {
         );
 
         if (confirmacao) {
-            salvarRifa(nome, telefone)
+           await salvarRifa(nome, telefone)
             alert('Compra confirmada! Obrigado por participar da rifa e boa sorte.');
             document.getElementById('valorTotal').textContent = 'R$ 0,00'; 
             numerosSelecionados = []; 
