@@ -140,7 +140,7 @@ async function confirmarPagamento() {
  
     if (numerosSelecionados.length > 0) {
         const confirmacao = confirm(
-            `Nome: ${nome}\nTelefone: ${telefone}\n R$${valorTotal}.00\n Números selecionados: ${numerosSelecionados.join(', ')}\nDeseja confirmar a compra?`
+            `Nome: ${nome}\nTelefone: ${telefone}\n R$${valorTotal}\n Números selecionados: ${numerosSelecionados.join(', ')}\nDeseja confirmar a compra?`
         );
 
         if (confirmacao) {
