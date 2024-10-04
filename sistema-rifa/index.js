@@ -140,7 +140,7 @@ async function confirmarPagamento() {
 
  
     if (numerosSelecionados.length > 0) {
-        const confirmacao = await showCustomConfirm( 'Confirmação:', `Nome: ${nome}<br>Telefone: ${telefone}<br>${valorTotal}<br>Números selecionados: ${numerosSelecionados.join(', ')}<br>Deseja confirmar a compra?`);
+        const confirmacao = await showCustomConfirm( 'Confirmação:', `Nome: ${nome}<br>Telefone: ${telefone}<br>${valorTotal}<br>${numerosSelecionados.length > 1 ? "Números selecionados: " + numerosSelecionados.join(', ') : "Número selecionado: " + numerosSelecionados[0]}<br>Deseja confirmar a compra?`);
         if (confirmacao) {
            await salvarRifa(nome, telefone)
            await  showCustomAlert('Aviso','Compra confirmada! Obrigado por participar da rifa e boa sorte.');
@@ -158,4 +158,7 @@ const buttonFinalizar = document.getElementById('buttonConfirm')
 buttonFinalizar.addEventListener('click', confirmarPagamento)
 
 // Chama a função para carregar números indisponíveis ao carregar a página
-window.onload = carregarNumerosIndisponiveis;
+window.onload = function() {
+    window.scrollTo(0, 0);
+    carregarNumerosIndisponiveis();
+};
