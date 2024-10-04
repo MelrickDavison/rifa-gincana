@@ -194,3 +194,60 @@ input[type="tel"]:focus {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed; /* Fixo na tela */
+    z-index: 1; /* Fica em cima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largura total */
+    height: 100%; /* Altura total */
+    overflow: auto; /* Permite rolagem se necessário */
+    background-color: rgb(0,0,0); /* Cor de fundo */
+    background-color: rgba(0,0,0,0.4); /* Fundo semi-transparente */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% do topo e centralizado */
+    padding: 20px;
+    border: 1px solid #888;
+    color: #024da3;
+    width: 80%; /* Largura */
+    max-width: 500px; /* Largura máxima */
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-actions {
+    display: flex; /* Usar flexbox para o layout */
+    justify-content: flex-end; /* Alinha o conteúdo à direita */
+    margin-top: 20px; /* Espaçamento acima do botão */
+}
+
+#confirmarModal {
+    padding: 10px 20px; 
+    background-color: #4A90E2;
+    color: white; 
+    border: none; 
+    border-radius: 5px;
+    cursor: pointer; 
+}
+
+#modalMessage {
+    white-space: pre-line; /* Ou use pre-wrap se precisar de quebra de linha com espaços */
+}
+
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

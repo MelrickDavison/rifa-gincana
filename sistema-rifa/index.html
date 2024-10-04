@@ -9,6 +9,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="customAlert" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModalAlert">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalMessage"></p>
+            <div class="modal-actions">
+                <button id="confirmButtonAlert" class='confirmarModal' style=" background-color: #4A90E2; color: #fff;">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="customConfirm" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModalConfirm">&times;</span>
+            <h2 id="modalTitleConfirm"></h2>
+            <p id="modalMessageConfirm"></p>
+            <div class="modal-actions">
+                <button id="cancelButton" class='cancelarModal' style=" background-color: #e73a3a; color: #fff; margin-right: 15px;">Cancelar</button>
+                <button id="confirmButtonConfirm" class='confirmarModal' style=" background-color: #4A90E2; color: #fff;">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
 
         <div  class="title">
@@ -65,6 +88,7 @@
     </div>
     </div>
     <script type="module" src="firebaseConfig.js"></script>
-    <script type="module" src="index.js"></script>
+    <script  type="module" src="modal.js"></script>
+    <script type="module" src="index.js"></script>  
 </body>
 </html>

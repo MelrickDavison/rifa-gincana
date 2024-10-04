@@ -1,5 +1,6 @@
 import {db} from './firebaseConfig.js'
 import { collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import {showCustomAlert, showCustomConfirm} from './modal.js'
 
 const numerosIndisponiveis = [];
 var numerosSelecionados = [];
@@ -45,7 +46,7 @@ async function salvarRifa(nome, telefone){
     }
     catch(error){
         console.error("Erro ao salvar a rifa: ", error);
-        alert("Ocorreu um erro ao reservar o número. Tente novamente.");
+        showCustomAlert('Aviso!',"Ocorreu um erro ao reservar o número. Tente novamente.");
     };
 }
 
@@ -65,7 +66,7 @@ function criarBotoesNumeros() {
 
         botao.addEventListener('click', function() {
             if (numerosIndisponiveis.includes(i)) {
-                alert('Este número já foi escolhido. Por favor, escolha outro.');
+                showCustomAlert('Aviso','Este número já foi escolhido. Por favor, escolha outro.');
             } else {
                 if(numerosSelecionados.includes(i)){
                     botao.classList.remove('selecionado');
@@ -80,7 +81,7 @@ function criarBotoesNumeros() {
                         botao.classList.remove('disponivel');
                         botao.classList.add('selecionado');
                     } else {
-                        alert('Por favor, preencha o nome e telefone.');
+                        showCustomAlert('Aviso','Por favor, preencha o nome e telefone.');
                     }
                 }
 
@@ -128,30 +129,27 @@ async function confirmarPagamento() {
     const valorTotal = document.getElementById('valorTotal').textContent;
 
     if (nome === '') {
-        alert('Por favor, insira seu nome.');
+        showCustomAlert("Aviso",'Por favor, insira seu nome.');
         return;
     }
 
     if (!validarTelefone(telefone)) {
-        alert('Por favor, insira um número de telefone válido.');
+        showCustomAlert('Aviso','Por favor, insira um número de telefone válido.');
         return;
     }
 
  
     if (numerosSelecionados.length > 0) {
-        const confirmacao = confirm(
-            `Nome: ${nome}\nTelefone: ${telefone}\n R$${valorTotal}\n Números selecionados: ${numerosSelecionados.join(', ')}\nDeseja confirmar a compra?`
-        );
-
+        const confirmacao = await showCustomConfirm( 'Confirmação:', `Nome: ${nome}<br>Telefone: ${telefone}<br>${valorTotal}<br>Números selecionados: ${numerosSelecionados.join(', ')}<br>Deseja confirmar a compra?`);
         if (confirmacao) {
            await salvarRifa(nome, telefone)
-            alert('Compra confirmada! Obrigado por participar da rifa e boa sorte.');
+           await  showCustomAlert('Aviso','Compra confirmada! Obrigado por participar da rifa e boa sorte.');
             document.getElementById('valorTotal').textContent = 'R$ 0,00'; 
             numerosSelecionados = []; 
             location.reload();
         }
     } else {
-        alert("Selecione ao menos um número para confirmar a compra.");
+        showCustomAlert('Aviso',"Selecione ao menos um número para confirmar a compra.");
     }
 }
 
