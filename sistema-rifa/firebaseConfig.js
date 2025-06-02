@@ -6,12 +6,12 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyB_dTp6BpvlrkeHVmNXrbJ0lBcKY5p_tGI",
-  authDomain: "rifa-casamento-27bac.firebaseapp.com",
-  projectId: "rifa-casamento-27bac",
-  storageBucket: "rifa-casamento-27bac.appspot.com",
-  messagingSenderId: "44037974062",
-  appId: "1:44037974062:web:0cfda4d9853392034f97bf"
+  apiKey: "AIzaSyAZNPYdn0bGCGnlIOct1Irr9azc_xxkgUI",
+  authDomain: "rifa-gincana.firebaseapp.com",
+  projectId: "rifa-gincana",
+  storageBucket: "rifa-gincana.firebasestorage.app",
+  messagingSenderId: "676031147646",
+  appId: "1:676031147646:web:241d6a9810b0605859f22f"
 };
 
 // Initialize Firebase
